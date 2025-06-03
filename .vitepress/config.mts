@@ -67,7 +67,7 @@ export default defineConfig({
     },
     siteTitle: "Smallweb",
     editLink: {
-      pattern: "https://github.com/pomdtr/smallweb.run/tree/main/www/:path",
+      pattern: "https://github.com/pomdtr/smallweb/tree/main/:path",
     },
     sidebar: {
       "/docs/": [
