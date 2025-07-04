@@ -1,8 +1,8 @@
-# Smallweb Plugins
+# Custom Commands
 
-The smallweb CLI can be extended with plugins. To create a new plugin, just create a script in `$SMALLWEB_DIR/.smallweb/plugins`. The script name (without the extension) will be mapped to a cli subcommand.
+The smallweb CLI can be extended with custom commands. To create a new command, just create a script in `$SMALLWEB_DIR/.smallweb/commands`. The script name (without the extension) will be mapped to a cli subcommand.
 
-Ex: if i create the following file as `$SMALLWEB_DIR/.smallweb/plugins/edit.sh`:
+Ex: if i create the following file as `$SMALLWEB_DIR/.smallweb/commands/edit.sh`:
 
 ```sh
 #!/bin/sh

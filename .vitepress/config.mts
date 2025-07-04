@@ -100,10 +100,6 @@ export default defineConfig({
               link: "/docs/guides/email",
             },
             {
-              text: "Git Integration",
-              link: "/docs/guides/git",
-            },
-            {
               text: "Cron Jobs",
               link: "/docs/guides/cron",
             },
@@ -120,8 +116,8 @@ export default defineConfig({
               link: "/docs/guides/opentelemetry",
             },
             {
-              text: "Plugins",
-              link: "/docs/guides/plugins",
+              text: "Custom Commands",
+              link: "/docs/guides/custom-commands",
             },
             {
               text: "Authentication",
