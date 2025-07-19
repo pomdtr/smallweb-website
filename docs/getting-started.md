@@ -12,7 +12,7 @@ A shared public instance of smallweb is available at [demo.smallweb.live](https:
 
 Please ping me either on [bluesky](https://bsky.app/profile/pomdtr.me) or [discord](https://discord.gg/BsgQK42qZe) if the demo is down.
 
-## Try it out
+## Installation
 
 First, you'll need to [install Deno](https://docs.deno.com/runtime/getting_started/installation/). I'll use the curl command here:
 
