@@ -12,11 +12,15 @@ A shared public instance of smallweb is available at [demo.smallweb.live](https:
 
 Please ping me either on [bluesky](https://bsky.app/profile/pomdtr.me) or [discord](https://discord.gg/BsgQK42qZe) if the demo is down.
 
-## Community
+## Try it out
 
-Join the [discord server](https://discord.gg/BsgQK42qZe) to ask questions, share your projects, and get help.
+First, you'll need to [install Deno](https://docs.deno.com/runtime/getting_started/installation/). I'll use the curl command here:
 
-## Installation
+```sh
+curl -fsSL https://deno.land/install.sh | sh
+```
+
+Then, install smallweb using one of the following methods:
 
 ```sh
 # use the install script
@@ -30,9 +34,19 @@ scoop bucket add pomdtr https://github.com/pomdtr/scoop-bucket.git
 scoop install pomdtr/smallweb
 ```
 
-You can also
+Next, create your smallweb directory (I'll use `~/smallweb`), and initialize it:
 
-Smallweb installations steps heavily depends on the experience you want to have with Smallweb. Here are a few options:
+```sh
+mkdir ~/smallweb && cd ~/smallweb
+smallweb init
+```
 
-- [Local Setup](./hosting/local/index.md) - Easiest way to get started, no need for a dedicated server or a domain name. Work on MacOS and Linux.
-- [VPS Setup](./hosting/vps.md) - Learn how to deploy smallweb on a VPS. Shows you how to setup a fresh Debian VPS to host your smallweb apps.
+Now you can start smallweb:
+
+```sh
+smallweb up
+```
+
+And access your apps at `http://<app>.smallweb.live:7777`.
+
+You'll have two apps available by default: `www` and `example`. You can access them at `http://www.smallweb.live:7777` and `http://example.smallweb.live:7777`.

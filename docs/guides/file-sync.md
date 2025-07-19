@@ -57,6 +57,14 @@ mutagen project start
 
 From now on, each time you make a change to your files, they will be automatically synced to the server, and vice-versa.
 
+## Resume the sync session on reboot
+
+To ensure that the sync session resumes automatically after a reboot, you can use the following command:
+
+```sh
+mutagen daemon register
+```
+
 ## Diagnosing sync issues
 
 If you encounter any issues with the sync, you can check the errors using the following command:

@@ -1,5 +1,5 @@
 import { defineConfig } from "vitepress";
-import llmstxt from 'vitepress-plugin-llms'
+import llmstxt from 'vitepress-plugin-llms';
 
 
 // https://vitepress.dev/reference/site-config
@@ -145,18 +145,18 @@ export default defineConfig({
           "text": "Hosting",
           items: [
             { text: "VPS", link: "/docs/hosting/vps" },
-            {
-              text: "Local Setup",
-              link: "/docs/hosting/local",
-              items: [
-                { text: "MacOS", link: "/docs/hosting/local/macos" },
-                { text: "Linux", link: "/docs/hosting/local/linux" },
-                { text: "Windows", link: "/docs/hosting/local/windows" },
-              ],
-            },
+            // {
+            //   text: "Local Setup",
+            //   link: "/docs/hosting/local",
+            //   items: [
+            //     { text: "MacOS", link: "/docs/hosting/local/macos" },
+            //     { text: "Linux", link: "/docs/hosting/local/linux" },
+            //     { text: "Windows", link: "/docs/hosting/local/windows" },
+            //   ],
+            // },
             { text: "Cloudflare Tunnel", link: "/docs/hosting/cloudflare" },
             { text: "Runtipi", link: "/docs/hosting/runtipi" },
-            { text: "Smallweb Cloud", link: "/docs/hosting/smallweb-cloud" },
+            // { text: "Smallweb Cloud", link: "/docs/hosting/smallweb-cloud" },
           ],
         },
         {

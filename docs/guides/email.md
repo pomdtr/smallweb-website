@@ -6,7 +6,7 @@ Each app has an unique email address (`<app>@<domain>`). You can hande incoming 
 import PostalMime from "npm:postal-mime";
 
 export default {
-    email: (msg: ReadableStream) => {
+    email: async (msg: ReadableStream) => {
         const email = await PostalMime.parse(msg);
 
         console.log('Subject:', email.subject);
@@ -19,6 +19,9 @@ export default {
 The email method receive a readable stream as it's first argument. You can use any library to parse the email content, I recommend [postal-mime](https://www.npmjs.com/package/postal-mime).
 
 Support for sending emails is not implemented yet.
+
+> [!WARNING]
+> Smallweb does not check SPF or DKIM records yet, meaning that you cannot not trust the sender address. This will be fixed in a future release.
 
 ## Setup
 
