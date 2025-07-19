@@ -30,7 +30,7 @@ hero:
       link: /docs/getting-started
     - theme: alt
       text: Open Demo
-      link: https://demo.smallweb.run
+      link: https://smallweb.club
 
 features:
   - icon: 📂
