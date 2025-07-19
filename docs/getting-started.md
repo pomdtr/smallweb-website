@@ -50,3 +50,53 @@ smallweb up
 And access your apps at `http://<app>.smallweb.live:7777`.
 
 You'll have two apps available by default: `www` and `example`. You can access them at `http://www.smallweb.live:7777` and `http://example.smallweb.live:7777`.
+
+If you want to be able to omit the port from the URL, you'll need to use the `:80` address:
+
+```sh
+# your app are now available at http://<app>.smallweb.live
+smallweb up --addr :80
+```
+
+On linux, you'll have to allow smallweb to bind to port 80:
+
+```sh
+sudo setcap 'cap_net_bind_service=+ep' $(which smallweb)
+```
+
+## Generating tls certificates using mkcert
+
+In order to get a proper TLS setup, you'll need to generate certificates for your domain.
+
+The easiest way to do this is using [mkcert](https://github.com/FiloSottile/mkcert).
+
+```sh
+brew install mkcert
+mkcert -install
+mkcert -cert-file smallweb.pem -key-file smallweb-key.pem smallweb.live "*.smallweb.live"
+```
+
+Then, you can use these certificates when starting smallweb:
+
+```sh
+smallweb up --addr :443 --tls-cert smallweb.pem --tls-key smallweb-key.pem
+```
+
+Your apps will now be available at `https://<app>.smallweb.live`.
+
+On linux, you'll have to allow smallweb to bind to port 443:
+
+```sh
+sudo setcap 'cap_net_bind_service=+ep' $(which smallweb)
+```
+
+## Using smallweb behind a reverse proxy
+
+Another option is to use a reverse proxy lik [caddy](https://caddyserver.com) as a reverse proxy for smallweb. Here is an example `Caddyfile` (assuming you arleady generated the certificates using mkcert):
+
+```txt
+smallweb.live, *.smallweb.live {
+  tls /path/to/smallweb.pem /path/to/smallweb-key.pem
+  reverse_proxy localhost:7777
+}
+```
