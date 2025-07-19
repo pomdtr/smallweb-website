@@ -1,6 +1,5 @@
 import { defineConfig } from "vitepress";
-import llmstxt from 'vitepress-plugin-llms';
-
+import llmstxt from "vitepress-plugin-llms";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -32,26 +31,35 @@ export default defineConfig({
         content: "/banner-icon.png",
       },
     ],
+    ["meta", { property: "twitter:card", content: "summary_large_image" }],
     [
-      "meta",
-      { property: "twitter:card", content: "summary_large_image" },
+      "link",
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "/favicon-96x96.png",
+        sizes: "96x96",
+      },
     ],
-    ["link", {
-      rel: "icon",
-      type: "image/png",
-      href: "/favicon-96x96.png",
-      sizes: "96x96",
-    }],
     ["link", { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
     ["link", { rel: "shortcut icon", href: "/favicon.ico" }],
-    ["link", {
-      rel: "apple-touch-icon",
-      sizes: "180x180",
-      href: "/apple-touch-icon.png",
-    }],
+    [
+      "link",
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/apple-touch-icon.png",
+      },
+    ],
     ["meta", { name: "apple-mobile-web-app-title", content: "Smallweb" }],
     ["link", { rel: "me", href: "mailto:achille.lacoin@gmail.com" }],
-    ["link", { rel: "webmention", href: "https://webmention.io/smallweb.run/webmention" }],
+    [
+      "link",
+      {
+        rel: "webmention",
+        href: "https://webmention.io/smallweb.run/webmention",
+      },
+    ],
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
@@ -67,7 +75,7 @@ export default defineConfig({
     },
     siteTitle: "Smallweb",
     editLink: {
-      pattern: "https://github.com/pomdtr/smallweb/tree/main/:path",
+      pattern: "https://github.com/pomdtr/smallweb-website/tree/main/:path",
     },
     sidebar: {
       "/docs/": [
@@ -138,11 +146,11 @@ export default defineConfig({
             {
               text: "Integrations",
               link: "/docs/guides/integrations",
-            }
+            },
           ],
         },
         {
-          "text": "Hosting",
+          text: "Hosting",
           items: [
             { text: "VPS", link: "/docs/hosting/vps" },
             // {
