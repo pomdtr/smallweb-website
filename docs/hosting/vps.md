@@ -38,7 +38,7 @@ curl -4 https://icanhazip.com
 curl -6 https://icanhazip.com
 ```
 
-If you do not own a domain yet, you can use a free [sslip.io](https://sslip.io/) domain. Ex: `37.27.85.244` -> `37-27-85-244.sslip.io`.
+If you do not own a domain yet, you can use a free [traefik.me](https://traefik.me/) domain. Ex: `37.27.85.244` -> `37-27-85-244.traefik.me`.
 
 ### Install Docker
 
@@ -110,6 +110,8 @@ Add the following to your `~/.ssh/config` file:
 Host example.com
   User _
   Port 2222
+  RequestTTY yes
+  LogLevel ERROR
 ```
 
 Now you can use `ssh example.com` to access the smallweb cli, and `ssh <app>@example.com` to access an app cli.

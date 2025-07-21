@@ -12,7 +12,7 @@ A shared public instance of smallweb is available at [smallweb.club](https://sma
 
 Please ping me either on [bluesky](https://bsky.app/profile/pomdtr.me) or [discord](https://discord.gg/BsgQK42qZe) if the demo is down.
 
-## Installation
+## Local Installation
 
 First, you'll need to [install Deno](https://docs.deno.com/runtime/getting_started/installation/). I'll use the curl command here:
 
@@ -64,7 +64,7 @@ On linux, you'll have to allow smallweb to bind to port 80:
 sudo setcap 'cap_net_bind_service=+ep' $(which smallweb)
 ```
 
-## Generating tls certificates using mkcert
+### Generating tls certificates using mkcert
 
 In order to get a proper TLS setup, you'll need to generate certificates for your domain.
 
@@ -90,13 +90,92 @@ On linux, you'll have to allow smallweb to bind to port 443:
 sudo setcap 'cap_net_bind_service=+ep' $(which smallweb)
 ```
 
-## Using smallweb behind a reverse proxy
+### Using smallweb behind a reverse proxy
 
-Another option is to use a reverse proxy like [caddy](https://caddyserver.com) as a reverse proxy on port 80 and 443. Here is an example `Caddyfile`:
+Another option is to use a reverse proxy like [caddy](https://caddyserver.com) as a reverse proxy on port 80 and 443.
+
+```sh
+brew install caddy && brew services start caddy
+```
+
+Here is an example `Caddyfile` routing `smallweb.traefik.me` to smallweb:
 
 ```txt
 smallweb.traefik.me, *.smallweb.traefik.me {
   tls internal
   reverse_proxy localhost:7777
 }
+```
+
+### Keep smallweb running in the background
+
+To keep smallweb running in the background, you can use a process manager like [systemd](https://www.freedesktop.org/wiki/Software/systemd/) on Linux or [launchd](https://launchd.info/) on macOS.
+
+#### Systemd
+
+Here is an example systemd service file for smallweb.
+
+```ini
+[Unit]
+Description=Smallweb
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/smallweb up
+WorkingDirectory=/home/:user/smallweb
+```
+
+You should store this file as `/home/pomdtr/.config/systemd/user/smallweb.service`.
+
+Then, enable and start the service:
+
+```sh
+systemctl --user enable smallweb
+systemctl --user start smallweb
+```
+
+#### Launchd
+
+And here is an example launchd plist file for smallweb on macOS:
+
+```xml
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>KeepAlive</key>
+        <true />
+        <key>Label</key>
+        <string>com.github.pomdtr.smallweb</string>
+        <key>LimitLoadToSessionType</key>
+        <array>
+            <string>Aqua</string>
+            <string>Background</string>
+            <string>LoginWindow</string>
+            <string>StandardIO</string>
+            <string>System</string>
+        </array>
+        <key>ProgramArguments</key>
+        <array>
+            <string>/opt/homebrew/bin/smallweb</string>
+            <string>up</string>
+        </array>
+        <key>WorkingDirectory</key>
+        <string>/Users/:user/smallweb</string>
+        <key>RunAtLoad</key>
+        <true />
+        <key>StandardErrorPath</key>
+        <string>/Users/pomdtr/Library/Logs/smallweb.log</string>
+        <key>StandardOutPath</key>
+        <string>/Users/pomdtr/Library/Logs/smallweb.log</string>
+    </dict>
+</plist>
+```
+
+You should store this file as `~/Library/LaunchAgents/com.github.pomdtr.smallweb.plist`.
+
+Then, load the service:
+
+```sh
+launchctl load ~/Library/LaunchAgents/com.github.pomdtr.smallweb.plist
 ```
