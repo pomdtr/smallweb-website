@@ -92,11 +92,11 @@ sudo setcap 'cap_net_bind_service=+ep' $(which smallweb)
 
 ## Using smallweb behind a reverse proxy
 
-Another option is to use a reverse proxy lik [caddy](https://caddyserver.com) as a reverse proxy for smallweb. Here is an example `Caddyfile` (assuming you arleady generated the certificates using mkcert):
+Another option is to use a reverse proxy like [caddy](https://caddyserver.com) as a reverse proxy on port 80 and 443. Here is an example `Caddyfile`:
 
 ```txt
 smallweb.traefik.me, *.smallweb.traefik.me {
-  tls /path/to/smallweb.pem /path/to/smallweb-key.pem
+  tls internal
   reverse_proxy localhost:7777
 }
 ```
