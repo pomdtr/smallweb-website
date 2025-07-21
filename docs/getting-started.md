@@ -47,14 +47,14 @@ Now you can start smallweb:
 smallweb up
 ```
 
-And access your apps at `http://<app>.smallweb.live:7777`.
+And access your apps at `http://<app>.smallweb.traefik.me:7777`.
 
-You'll have two apps available by default: `www` and `example`. You can access them at `http://www.smallweb.live:7777` and `http://example.smallweb.live:7777`.
+You'll have two apps available by default: `www` and `example`. You can access them at `http://www.smallweb.traefik.me:7777` and `http://example.smallweb.traefik.me:7777`.
 
 If you want to be able to omit the port from the URL, you'll need to use the `:80` address:
 
 ```sh
-# your app are now available at http://<app>.smallweb.live
+# your app are now available at http://<app>.smallweb.traefik.me
 smallweb up --addr :80
 ```
 
@@ -73,7 +73,7 @@ The easiest way to do this is using [mkcert](https://github.com/FiloSottile/mkce
 ```sh
 brew install mkcert
 mkcert -install
-mkcert -cert-file smallweb.pem -key-file smallweb-key.pem smallweb.live "*.smallweb.live"
+mkcert -cert-file smallweb.pem -key-file smallweb-key.pem smallweb.traefik.me "*.smallweb.traefik.me"
 ```
 
 Then, you can use these certificates when starting smallweb:
@@ -82,7 +82,7 @@ Then, you can use these certificates when starting smallweb:
 smallweb up --addr :443 --tls-cert smallweb.pem --tls-key smallweb-key.pem
 ```
 
-Your apps will now be available at `https://<app>.smallweb.live`.
+Your apps will now be available at `https://<app>.smallweb.traefik.me`.
 
 On linux, you'll have to allow smallweb to bind to port 443:
 
@@ -95,7 +95,7 @@ sudo setcap 'cap_net_bind_service=+ep' $(which smallweb)
 Another option is to use a reverse proxy lik [caddy](https://caddyserver.com) as a reverse proxy for smallweb. Here is an example `Caddyfile` (assuming you arleady generated the certificates using mkcert):
 
 ```txt
-smallweb.live, *.smallweb.live {
+smallweb.traefik.me, *.smallweb.traefik.me {
   tls /path/to/smallweb.pem /path/to/smallweb-key.pem
   reverse_proxy localhost:7777
 }
