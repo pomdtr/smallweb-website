@@ -38,8 +38,11 @@ Next, create your smallweb directory (I'll use `~/smallweb`), and initialize it:
 
 ```sh
 mkdir ~/smallweb && cd ~/smallweb
-smallweb init
+smallweb init smallweb.traefik.me
 ```
+
+> [!INFO]
+> [traefik.me](https://traefik.me) is a magic domain that will always route request to `127.0.0.1` (localhost). You can also use [local.gd](https://local.gd).
 
 Now you can start smallweb:
 
@@ -73,13 +76,13 @@ The easiest way to do this is using [mkcert](https://github.com/FiloSottile/mkce
 ```sh
 brew install mkcert
 mkcert -install
-mkcert -cert-file smallweb.pem -key-file smallweb-key.pem smallweb.traefik.me "*.smallweb.traefik.me"
+mkcert -cert-file cert.pem -key-file key.pem smallweb.traefik.me '*.smallweb.traefik.me'
 ```
 
 Then, you can use these certificates when starting smallweb:
 
 ```sh
-smallweb up --addr :443 --tls-cert smallweb.pem --tls-key smallweb-key.pem
+smallweb up --addr :443 --tls-cert cert.pem --tls-key key.pem
 ```
 
 Your apps will now be available at `https://<app>.smallweb.traefik.me`.
@@ -126,7 +129,7 @@ ExecStart=/usr/local/bin/smallweb up
 WorkingDirectory=/home/:user/smallweb
 ```
 
-You should store this file as `/home/pomdtr/.config/systemd/user/smallweb.service`.
+You should store this file as `~/.config/systemd/user/smallweb.service`.
 
 Then, enable and start the service:
 
