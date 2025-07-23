@@ -2,7 +2,7 @@
 
 Each smallweb app has write access to a `data` directory at the root of the app dir. This is a good place to store data that your app needs to persist between requests.
 
-## Storing Blobs
+## Storing Files
 
  You can use the `Deno` standard library to read and write files in the `data` directory.
 
