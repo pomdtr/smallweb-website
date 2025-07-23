@@ -31,10 +31,6 @@ Smallweb automatically injects the following environment variables into your app
 
 - `SMALLWEB_VERSION`: The version of the smallweb CLI.
 - `SMALLWEB_DIR`: The directory where the smallweb apps are stored.
-- `SMALLWEB_DOMAIN`: The domain where the smallweb apps are served from.
-- `SMALLWEB_APP_NAME`: The name of the app.
-- `SMALLWEB_APP_DOMAIN`: The domain of the app.
-- `SMALLWEB_APP_URL`: The base URL of the app.
 
 In addition to these, the `SMALLWEB_ADMIN` environment variable is also set for admin apps.
 
