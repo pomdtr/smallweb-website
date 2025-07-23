@@ -18,17 +18,17 @@ smallweb [flags]
 
 ## smallweb config
 
-Get a configuration value
+Open Smallweb configuration
 
 ```
-smallweb config <key> [flags]
+smallweb config [flags]
 ```
 
 ### Options
 
 ```
   -h, --help   help for config
-      --json   Output as JSON
+      --json   Output the configuration in JSON format
 ```
 
 ### Options inherited from parent commands
@@ -49,9 +49,9 @@ smallweb crons [app] [flags]
 ### Options
 
 ```
-      --all    show all cron jobs
-  -h, --help   help for crons
-      --json   output as json
+  -a, --app string   filter by app name
+  -h, --help         help for crons
+      --json         output as json
 ```
 
 ### Options inherited from parent commands
@@ -87,35 +87,13 @@ smallweb doctor [flags]
 Initialize a new workspace
 
 ```
-smallweb init [flags]
+smallweb init <domain> [flags]
 ```
 
 ### Options
 
 ```
   -h, --help   help for init
-```
-
-### Options inherited from parent commands
-
-```
-      --dir string      The root directory for smallweb
-      --domain string   The domain for smallweb
-```
-
-## smallweb link
-
-Create symbolic links
-
-```
-smallweb link <source> <target> [flags]
-```
-
-### Options
-
-```
-  -f, --force   Force overwrite existing symlinks
-  -h, --help    help for link
 ```
 
 ### Options inherited from parent commands
@@ -136,32 +114,9 @@ smallweb list [flags]
 ### Options
 
 ```
-      --admin                  filter by admin
-  -h, --help                   help for list
-      --json                   output as json
-      --template string        template to use
-      --template-file string   template file to use
-```
-
-### Options inherited from parent commands
-
-```
-      --dir string      The root directory for smallweb
-      --domain string   The domain for smallweb
-```
-
-## smallweb open
-
-Open an app in the browser
-
-```
-smallweb open [app] [flags]
-```
-
-### Options
-
-```
-  -h, --help   help for open
+      --admin   filter by admin
+  -h, --help    help for list
+      --json    output as json
 ```
 
 ### Options inherited from parent commands
@@ -192,29 +147,6 @@ smallweb run <app> [args...] [flags]
       --domain string   The domain for smallweb
 ```
 
-## smallweb secrets
-
-Print app secrets
-
-```
-smallweb secrets [app] [flags]
-```
-
-### Options
-
-```
-      --dotenv   Output as dotenv
-  -h, --help     help for secrets
-      --json     Output as JSON
-```
-
-### Options inherited from parent commands
-
-```
-      --dir string      The root directory for smallweb
-      --domain string   The domain for smallweb
-```
-
 ## smallweb up
 
 Start the smallweb evaluation server
@@ -229,9 +161,12 @@ smallweb up [flags]
       --addr string              address to listen on
       --enable-crons             enable cron jobs
   -h, --help                     help for up
-      --log-format string        log format (json or text) (default "pretty")
+      --log-format string        log format (json, text or pretty)
+      --log-output string        log output (stdout, stderr or filepath) (default "stderr")
+      --on-demand-tls            enable on-demand tls
       --smtp-addr string         address to listen on for smtp
       --ssh-addr string          address to listen on for ssh/sftp
+      --ssh-host-key string      ssh host key
       --ssh-private-key string   ssh private key
       --tls-cert string          tls certificate file
       --tls-key string           tls key file
