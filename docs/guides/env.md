@@ -38,7 +38,7 @@ In addition to these, the `SMALLWEB_ADMIN` environment variable is also set for 
 
 > [!WARNING] This feature is recommended only for advanced users.
 
-Smallweb delegates encryption to [SOPS](https://github.com/getsops/sops). Encrypted secrets are stored in a `secrets.enc.env` file at the root of your app dir.
+Smallweb delegates encryption to [SOPS](https://github.com/getsops/sops). Encrypted secrets are stored in a `secrets.enc.env` file at the root of your app dir (you can also use `secrets.env`).
 
 Smallweb will automatically decrypt the file using your private ssh key (`~/.ssh/id_ed25519` by default) and inject the secrets as environment variables into your app at runtime.
 
