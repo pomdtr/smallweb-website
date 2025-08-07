@@ -38,7 +38,7 @@ curl -4 https://icanhazip.com
 curl -6 https://icanhazip.com
 ```
 
-If you do not own a domain yet, you can use a free [traefik.me](https://traefik.me/) domain. Ex: `37.27.85.244` -> `37-27-85-244.traefik.me`.
+If you do not own a domain yet, you can use a free [sslip.io](https://sslip.io/) domain. Ex: `37.27.85.244` -> `37-27-85-244.sslip.io`.
 
 ### Install Docker
 
