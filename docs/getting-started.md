@@ -38,11 +38,11 @@ Next, create your smallweb directory (I'll use `~/smallweb`), and initialize it:
 
 ```sh
 mkdir ~/smallweb && cd ~/smallweb
-smallweb init smallweb.traefik.me
+smallweb init smallweb.live
 ```
 
 > [!INFO]
-> [traefik.me](https://traefik.me) is a magic domain that will always route request to `127.0.0.1` (localhost). You can also use [local.gd](https://local.gd).
+> `smallweb.live` is a magic domain that will always route request to `127.0.0.1` (localhost). You can also use [traefik.me](https://traefik.me) or [local.gd](https://local.gd).
 
 Now you can start smallweb:
 
@@ -50,14 +50,14 @@ Now you can start smallweb:
 smallweb up
 ```
 
-And access your apps at `http://<app>.smallweb.traefik.me:7777`.
+And access your apps at `http://<app>.smallweb.live:7777`.
 
-You'll have two apps available by default: `www` and `example`. You can access them at `http://www.smallweb.traefik.me:7777` and `http://example.smallweb.traefik.me:7777`.
+You'll have two apps available by default: `www` and `example`. You can access them at `http://www.smallweb.live:7777` and `http://example.smallweb.live:7777`.
 
 If you want to be able to omit the port from the URL, you'll need to use the `:80` address:
 
 ```sh
-# your app are now available at http://<app>.smallweb.traefik.me
+# your app are now available at http://<app>.smallweb.live
 smallweb up --addr :80
 ```
 
@@ -76,7 +76,7 @@ The easiest way to do this is using [mkcert](https://github.com/FiloSottile/mkce
 ```sh
 brew install mkcert
 mkcert -install
-mkcert -cert-file cert.pem -key-file key.pem smallweb.traefik.me '*.smallweb.traefik.me'
+mkcert -cert-file cert.pem -key-file key.pem smallweb.live '*.smallweb.live'
 ```
 
 Then, you can use these certificates when starting smallweb:
@@ -85,7 +85,7 @@ Then, you can use these certificates when starting smallweb:
 smallweb up --addr :443 --tls-cert cert.pem --tls-key key.pem
 ```
 
-Your apps will now be available at `https://<app>.smallweb.traefik.me`.
+Your apps will now be available at `https://<app>.smallweb.live`.
 
 On linux, you'll have to allow smallweb to bind to port 443:
 
@@ -101,10 +101,10 @@ Another option is to use a reverse proxy like [caddy](https://caddyserver.com) a
 brew install caddy && brew services start caddy
 ```
 
-Here is an example `Caddyfile` routing `smallweb.traefik.me` to smallweb:
+Here is an example `Caddyfile` routing `smallweb.live` to smallweb:
 
 ```txt
-smallweb.traefik.me, *.smallweb.traefik.me {
+smallweb.live, *.smallweb.live {
   tls internal
   reverse_proxy localhost:7777
 }
